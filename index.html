@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pattu Vibes – Silk Sarees</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo"><img src="logo.png" alt="Pattu Vibes" class="logo-img"/></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-shopping-bag" id="cartIcon"></i>
+      <span class="cart-count" id="cartCount">0</span>
+      <i class="fas fa-moon" id="themeToggle" title="Toggle Dark Mode"></i>
+      <i class="fas fa-bars" id="menuToggle"></i>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-sub">Elegance in Every Thread</p>
+      <h1>Drape Yourself in <span>Pure Silk</span></h1>
+      <p class="hero-desc">Handpicked Cottonjute, Banarasi & Patola sarees — crafted for queens like you.</p>
+      <a href="#collections" class="btn-primary">Explore Collections</a>
+    </div>
+    <div class="hero-img">
+      <img src="logo.png" alt="Pattu Vibes" class="hero-logo-img"/>
+      <div class="hero-badge">Est. 2026</div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="feature"><i class="fas fa-shipping-fast"></i><p>Free Shipping</p></div>
+    <div class="feature"><i class="fas fa-undo"></i><p>Easy Returns</p></div>
+    <div class="feature"><i class="fas fa-award"></i><p>100% Authentic</p></div>
+    <div class="feature"><i class="fas fa-headset"></i><p>24/7 Support</p></div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section class="collections" id="collections">
+    <h2 class="section-title">Our <span>Collections</span></h2>
+    <p class="section-sub">Timeless weaves for every occasion</p>
+    <div class="filter-tabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="cottonjute">Cottonjute</button>
+      <button class="tab" data-filter="smallputta">Small Putta</button>
+      <button class="tab" data-filter="bigputta">Big Putta</button>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <h2>About <span>Pattu Vibes</span></h2>
+      <p>Born from a passion for India's rich textile heritage, Pattu Vibes brings you the finest handwoven silk sarees sourced directly from master weavers across Tamil Nadu, Varanasi, and Gujarat.</p>
+      <p>Every saree tells a story — of tradition, craftsmanship, and timeless beauty.</p>
+      <div class="stats">
+        <div><h3>200+</h3><p>Varieties</p></div>
+        <div><h3>100%</h3><p>Direct from Manufacturer</p></div>
+      </div>
+    </div>
+    <div class="about-img">
+      <div class="about-circle">
+        <i class="fas fa-spa"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2 class="section-title">What Our <span>Customers Say</span></h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>"The Cottonjute saree I ordered was breathtaking. The quality is unmatched!"</p>
+        <div class="reviewer"><i class="fas fa-user-circle"></i><span>Priya S., Chennai</span></div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Pattu Vibes has the best collection. Received so many compliments at my wedding!"</p>
+        <div class="reviewer"><i class="fas fa-user-circle"></i><span>Meena R., Coimbatore</span></div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Fast delivery and the saree was exactly as shown. Will definitely order again."</p>
+        <div class="reviewer"><i class="fas fa-user-circle"></i><span>Lakshmi K., Madurai</span></div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Get In <span>Touch</span></h2>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <div><i class="fas fa-map-marker-alt"></i><p>Thaneer Pandal Palayam, Karuvalur, Avinashi - 641670</p></div>
+        <div><i class="fas fa-phone"></i><p><a href="tel:+916369794482" style="color:var(--text);text-decoration:none;">+91 63697 94482</a> / <a href="tel:+919965845668" style="color:var(--text);text-decoration:none;">+91 99658 45668</a></p></div>
+        <div><i class="fas fa-envelope"></i><p><a href="mailto:pattuvibesofficial@gmail.com" style="color:var(--text);text-decoration:none;">pattuvibesofficial@gmail.com</a></p></div>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/pattu_vibes_?igsh=azFvZnZhNHZ6Z3Bh" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/916369794482" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <a href="https://www.google.com/maps/place/Thaneer+Pandal+Palayam/@11.1724234,77.190671,15z/data=!4m15!1m8!3m7!1s0x3ba960cdf2f23431:0xcd05d783dc6005c6!2sThanneerpandalpalayam,+Tamil+Nadu+637304!3b1!8m2!3d11.4184415!4d77.8403016!16s%2Fg%2F1tm0rljh!3m5!1s0x3ba9037978db679f:0x36edfb663d6c1352!8m2!3d11.172425!4d77.1968667!16s%2Fg%2F11v9vpxmhw?entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-link">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.0!2d77.1968667!3d11.172425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9037978db679f%3A0x36edfb663d6c1352!2sThaneer+Pandal+Palayam!5e0!3m2!1sen!2sin!4v1700000000000"
+          class="map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="map-overlay"><i class="fas fa-map-marker-alt"></i> Open in Google Maps</div>
+      </a>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="d23f3ad4-5089-46ac-97bf-83afbfe07dde"/>
+        <input type="hidden" name="subject" value="New Feedback – Pattu Vibes"/>
+        <input type="text" name="name" placeholder="Your Name" required/>
+        <input type="email" name="email" placeholder="Your Email" required/>
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <strong>Pattu Vibes</strong>. Made with ❤️ for Silk Lovers.</p>
+  </footer>
+
+  <!-- CART MODAL -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3>🛍️ Your Cart</h3>
+        <i class="fas fa-times" id="closeCart"></i>
+      </div>
+      <div id="cartItems"></div>
+      <div class="cart-footer" id="cartFooter"></div>
+    </div>
+  </div>
+  <!-- ADDRESS MODAL -->
+  <div class="payment-modal" id="addressModal">
+    <div class="payment-content">
+      <div class="payment-header">
+        <h3>📍 Delivery Details</h3>
+        <i class="fas fa-times" id="closeAddress"></i>
+      </div>
+      <form class="address-form" id="addressForm">
+        <input type="text" id="addr_name" placeholder="Full Name" required/>
+        <input type="tel" id="addr_phone" placeholder="Phone Number" required/>
+        <input type="text" id="addr_street" placeholder="Street Address" required/>
+        <div class="addr-row">
+          <input type="text" id="addr_city" placeholder="City" required/>
+          <input type="text" id="addr_state" placeholder="State" required/>
+        </div>
+        <input type="text" id="addr_pincode" placeholder="Pincode" required/>
+        <button type="submit" class="btn-primary" style="width:100%">Proceed to Payment</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PAYMENT MODAL -->
+  <div class="payment-modal" id="paymentModal">
+    <div class="payment-content">
+      <div class="payment-header">
+        <h3>💳 Choose Payment Method</h3>
+        <i class="fas fa-times" id="closePayment"></i>
+      </div>
+      <div class="payment-options">
+        <div class="payment-option" onclick="confirmPayment('UPI')">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo-vector.svg/1200px-UPI-Logo-vector.svg.png" alt="UPI"/>
+          <span>UPI (GPay, PhonePe, Paytm)</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="payment-option" onclick="confirmPayment('Credit / Debit Card')">
+          <i class="fas fa-credit-card pay-icon"></i>
+          <span>Credit / Debit Card</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="payment-option" onclick="confirmPayment('Net Banking')">
+          <i class="fas fa-university pay-icon"></i>
+          <span>Net Banking</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="payment-option" onclick="confirmPayment('Cash on Delivery')">
+          <i class="fas fa-money-bill-wave pay-icon"></i>
+          <span>Cash on Delivery</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OTP MODAL -->
+  <div class="payment-modal" id="otpModal">
+    <div class="payment-content">
+      <div class="payment-header">
+        <h3>🔐 Confirm Your Order</h3>
+        <i class="fas fa-times" id="closeOtp"></i>
+      </div>
+      <div class="otp-body">
+        <p class="otp-info">Enter the 4-digit OTP sent to your phone</p>
+        <div class="otp-inputs">
+          <input type="text" maxlength="1" class="otp-box" />
+          <input type="text" maxlength="1" class="otp-box" />
+          <input type="text" maxlength="1" class="otp-box" />
+          <input type="text" maxlength="1" class="otp-box" />
+        </div>
+        <button class="btn-primary" style="width:100%" onclick="verifyOtp()">Verify & Confirm Order</button>
+        <p class="otp-resend">Didn't receive? <span onclick="resendOtp()">Resend OTP</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
