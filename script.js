@@ -10,7 +10,6 @@ const products = [
 ];
 
 let cart = [];
-let activeFilter = "all";
 
 function renderProducts(filter) {
   const grid = document.getElementById("productGrid");
@@ -108,14 +107,7 @@ function submitTxn() {
   renderCart();
   document.getElementById("txnModal").classList.remove("open");
   document.getElementById("overlay").classList.remove("show");
-  document.getElementById("txnInput").value = "";
 }
-
-document.getElementById("closeTxn").addEventListener("click", () => {
-  document.getElementById("txnModal").classList.remove("open");
-  document.getElementById("overlay").classList.remove("show");
-});
-
 
 function confirmPayment(method) {
   document.getElementById("paymentModal").classList.remove("open");
@@ -185,6 +177,11 @@ document.getElementById("closePayment").addEventListener("click", () => {
 
 document.getElementById("closeOtp").addEventListener("click", () => {
   document.getElementById("otpModal").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+});
+
+document.getElementById("closeTxn").addEventListener("click", () => {
+  document.getElementById("txnModal").classList.remove("open");
   document.getElementById("overlay").classList.remove("show");
 });
 
