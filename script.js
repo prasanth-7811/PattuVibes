@@ -117,6 +117,7 @@ document.getElementById("closeTxn").addEventListener("click", () => {
 });
 
 
+function confirmPayment(method) {
   document.getElementById("paymentModal").classList.remove("open");
   document.getElementById("otpModal").classList.add("open");
   generateOtp();
