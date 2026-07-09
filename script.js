@@ -93,7 +93,30 @@ function checkout() {
   document.getElementById("overlay").classList.add("show");
 }
 
-function confirmPayment(method) {
+function openTxnModal() {
+  document.getElementById("paymentModal").classList.remove("open");
+  document.getElementById("txnModal").classList.add("open");
+  document.getElementById("txnInput").value = "";
+}
+
+function submitTxn() {
+  const txn = document.getElementById("txnInput").value.trim();
+  if (!txn) { alert("Please enter your Transaction ID."); return; }
+  alert("✅ Order confirmed!\nTransaction ID: " + txn + "\nThank you for shopping at Pattu Vibes! 🎉\nWe will verify and contact you shortly.");
+  cart = [];
+  updateCartCount();
+  renderCart();
+  document.getElementById("txnModal").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+  document.getElementById("txnInput").value = "";
+}
+
+document.getElementById("closeTxn").addEventListener("click", () => {
+  document.getElementById("txnModal").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+});
+
+
   document.getElementById("paymentModal").classList.remove("open");
   document.getElementById("otpModal").classList.add("open");
   generateOtp();

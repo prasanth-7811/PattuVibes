@@ -236,7 +236,16 @@ footer strong { color: var(--gold); }
 .payment-option span { flex: 1; font-weight: 500; }
 .payment-option .fa-chevron-right { color: #ccc; font-size: 0.8rem; }
 
-/* OTP MODAL */
+.upi-qr {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  padding: 1.2rem; border: 2px dashed var(--primary); border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+.upi-qr img { width: 180px; height: 180px; border-radius: 8px; }
+.upi-qr p { font-size: 0.85rem; color: var(--text); }
+.upi-qr span { font-weight: 600; color: var(--primary); font-size: 0.9rem; }
+
+
 .otp-body { padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
 .otp-info { color: var(--text); font-size: 0.9rem; text-align: center; }
 .otp-inputs { display: flex; gap: 0.8rem; }

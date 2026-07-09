@@ -67,7 +67,7 @@
   <section class="about" id="about">
     <div class="about-text">
       <h2>About <span>Pattu Vibes</span></h2>
-      <p>Born from a passion for India's rich textile heritage, Pattu Vibes brings you the finest handwoven silk sarees sourced directly from master weavers across Tamil Nadu, Varanasi, and Gujarat.</p>
+      <p>Born from a passion for India's rich textile heritage, Pattu Vibes brings you the finest handwoven silk sarees sourced directly from master weavers across Tamil Nadu.</p>
       <p>Every saree tells a story — of tradition, craftsmanship, and timeless beauty.</p>
       <div class="stats">
         <div><h3>200+</h3><p>Varieties</p></div>
@@ -180,9 +180,19 @@
         <i class="fas fa-times" id="closePayment"></i>
       </div>
       <div class="payment-options">
-        <div class="payment-option" onclick="confirmPayment('UPI')">
+        <div class="upi-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=pm0609351@superyes&pn=Pattu%20Vibes&cu=INR" alt="UPI QR Code"/>
+          <p>Scan to Pay via any UPI App</p>
+          <span>pm0609351@superyes</span>
+        </div>
+        <div class="payment-option" onclick="openTxnModal()">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo-vector.svg/1200px-UPI-Logo-vector.svg.png" alt="UPI"/>
           <span>UPI (GPay, PhonePe, Paytm)</span>
+          <div style="display:flex;gap:6px;align-items:center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/512px-Google_Pay_Logo.svg.png" style="height:22px;width:auto;"/>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/PhonePe_Logo.svg/512px-PhonePe_Logo.svg.png" style="height:22px;width:auto;"/>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/512px-Paytm_Logo_%28standalone%29.svg.png" style="height:22px;width:auto;"/>
+          </div>
           <i class="fas fa-chevron-right"></i>
         </div>
         <div class="payment-option" onclick="confirmPayment('Credit / Debit Card')">
@@ -221,6 +231,21 @@
         </div>
         <button class="btn-primary" style="width:100%" onclick="verifyOtp()">Verify & Confirm Order</button>
         <p class="otp-resend">Didn't receive? <span onclick="resendOtp()">Resend OTP</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSACTION ID MODAL -->
+  <div class="payment-modal" id="txnModal">
+    <div class="payment-content">
+      <div class="payment-header">
+        <h3>✅ Enter Transaction ID</h3>
+        <i class="fas fa-times" id="closeTxn"></i>
+      </div>
+      <div class="otp-body">
+        <p class="otp-info">Complete your UPI payment and enter the Transaction ID below</p>
+        <input type="text" id="txnInput" placeholder="e.g. 4357XXXXXXXX" style="width:100%;padding:0.9rem 1.2rem;border:2px solid #e8d5c0;border-radius:10px;font-family:'Poppins',sans-serif;font-size:0.95rem;outline:none;text-align:center;"/>
+        <button class="btn-primary" style="width:100%" onclick="submitTxn()">Confirm Order</button>
       </div>
     </div>
   </div>
