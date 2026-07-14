@@ -94,6 +94,7 @@ function addToCart(id) {
   updateCartCount();
   renderCart();
   openCart();
+  triggerCartBounce();
 }
 
 function removeFromCart(id) {
@@ -274,6 +275,78 @@ themeToggle.addEventListener("click", () => {
   themeToggle.classList.replace(isDark ? "fa-moon" : "fa-sun", isDark ? "fa-sun" : "fa-moon");
   localStorage.setItem("dark", isDark ? "1" : "0");
 });
+
+// Scroll fade-in observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll(".section-title, .section-sub, .about-text, .about-circle, .testimonial-card, .contact-info, .contact-form, .feature").forEach(el => {
+  el.classList.add("fade-in"); observer.observe(el);
+});
+
+// Navbar shrink on scroll
+window.addEventListener("scroll", () => {
+  document.querySelector(".navbar").classList.toggle("scrolled", window.scrollY > 60);
+});
+
+// Cursor sparkle
+document.addEventListener("mousemove", e => {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = e.clientX + "px";
+  s.style.top  = e.clientY + "px";
+  s.style.width = s.style.height = (6 + Math.random() * 8) + "px";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 600);
+});
+
+// Floating particles
+(function() {
+  const canvas = document.getElementById("particleCanvas");
+  const ctx = canvas.getContext("2d");
+  let W, H, particles = [];
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener("resize", resize);
+  const colors = ["#C9A84C", "#8B1A4A", "#f5d07a", "#e8b4cb", "#fff"];
+  for (let i = 0; i < 55; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: 1.5 + Math.random() * 3,
+      dx: (Math.random() - 0.5) * 0.5,
+      dy: -0.3 - Math.random() * 0.5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: 0.3 + Math.random() * 0.5
+    });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.fill();
+      p.x += p.dx; p.y += p.dy;
+      if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
+      if (p.x < -10) p.x = W + 10;
+      if (p.x > W + 10) p.x = -10;
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// Cart icon bounce
+function triggerCartBounce() {
+  const icon = document.getElementById("cartIcon");
+  icon.classList.remove("cart-bounce");
+  void icon.offsetWidth;
+  icon.classList.add("cart-bounce");
+  icon.addEventListener("animationend", () => icon.classList.remove("cart-bounce"), { once: true });
+}
 
 // Init
 renderProducts("all");

@@ -320,6 +320,292 @@ body.dark .payment-option:hover { background: #2a2a4e; }
 body.dark .otp-box { background: #1e1e2e; border-color: #3a3a5a; color: #f0e6d3; }
 body.dark footer { background: #0a0a0a; }
 
+/* ══════════════════════════════════
+   ANIMATIONS — PATTU VIBES
+══════════════════════════════════ */
+
+/* ── Floating particles canvas ── */
+#particleCanvas {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+  opacity: 0.45;
+}
+
+/* ── Cursor sparkle ── */
+.sparkle {
+  position: fixed; pointer-events: none; z-index: 9999;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: radial-gradient(circle, var(--gold), var(--primary));
+  animation: sparkleFade 0.6s ease forwards;
+  transform: translate(-50%, -50%);
+}
+@keyframes sparkleFade {
+  0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%,-50%) scale(2.5); }
+}
+
+/* ── Scroll fade-in ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Hero content reveal ── */
+.hero-sub   { animation: heroReveal 0.8s ease both 0.2s; }
+.hero-content h1 { animation: heroReveal 0.8s ease both 0.4s; }
+.hero-desc  { animation: heroReveal 0.8s ease both 0.6s; }
+.hero-content .btn-primary { animation: heroReveal 0.8s ease both 0.8s; }
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Hero image zoom-in ── */
+.hero-logo-img {
+  animation: float 4s ease-in-out infinite, zoomIn 1s ease both 0.3s;
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Hero badge pop ── */
+.hero-badge {
+  animation: badgePop 0.6s cubic-bezier(.34,1.56,.64,1) both 1s;
+}
+@keyframes badgePop {
+  from { opacity: 0; transform: scale(0) rotate(-10deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ── Navbar scroll shrink (via JS class) ── */
+.navbar.scrolled {
+  padding: 0.5rem 6%;
+  box-shadow: 0 4px 30px rgba(139,26,74,0.15);
+  background: rgba(255,255,255,0.98);
+  transition: all 0.3s;
+}
+
+/* ── Nav link animated underline ── */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 2px; background: var(--primary);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* ── Staggered product cards ── */
+.product-card {
+  animation: cardPop 0.55s cubic-bezier(.22,1,.36,1) both;
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s;
+}
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.12s; }
+.product-card:nth-child(3) { animation-delay: 0.19s; }
+.product-card:nth-child(4) { animation-delay: 0.26s; }
+.product-card:nth-child(5) { animation-delay: 0.33s; }
+.product-card:nth-child(6) { animation-delay: 0.40s; }
+.product-card:nth-child(7) { animation-delay: 0.47s; }
+.product-card:nth-child(8) { animation-delay: 0.54s; }
+.product-card:nth-child(9) { animation-delay: 0.61s; }
+@keyframes cardPop {
+  from { opacity: 0; transform: scale(0.88) translateY(30px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(139,26,74,0.18);
+}
+
+/* ── Product image zoom on hover ── */
+.product-img img, .kerala-img img {
+  transition: transform 0.5s ease;
+}
+.product-card:hover .product-img img,
+.product-card:hover .kerala-img img {
+  transform: scale(1.08);
+}
+
+/* ── Add to cart button ripple ── */
+.add-to-cart {
+  position: relative; overflow: hidden;
+}
+.add-to-cart::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.3);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.add-to-cart:hover::after { transform: scaleX(1); }
+
+/* ── Shimmer on badges ── */
+.product-badge {
+  background: linear-gradient(90deg, #b8860b 0%, #f5d07a 40%, var(--gold) 60%, #b8860b 100%);
+  background-size: 250% auto;
+  animation: shimmer 2s linear infinite;
+  color: #fff;
+}
+@keyframes shimmer { to { background-position: 250% center; } }
+
+/* ── Glow pulse on buttons ── */
+.btn-primary {
+  position: relative; overflow: hidden;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+.btn-primary::before {
+  content: ''; position: absolute; top: -50%; left: -60%;
+  width: 40%; height: 200%;
+  background: rgba(255,255,255,0.25);
+  transform: skewX(-20deg);
+  animation: btnShine 3s ease-in-out infinite;
+}
+@keyframes btnShine {
+  0%   { left: -60%; }
+  50%  { left: 130%; }
+  100% { left: 130%; }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0px rgba(139,26,74,0); }
+  50%       { box-shadow: 0 0 22px rgba(139,26,74,0.5); }
+}
+.btn-primary:hover { animation: none; }
+
+/* ── Cart icon bounce ── */
+@keyframes cartBounce {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.5) rotate(-10deg); }
+  50%  { transform: scale(0.85) rotate(5deg); }
+  75%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.cart-bounce { animation: cartBounce 0.5s ease; }
+
+/* ── Features bar slide-in ── */
+.feature { animation: featureSlide 0.6s ease both; }
+.feature:nth-child(1) { animation-delay: 0.1s; }
+.feature:nth-child(2) { animation-delay: 0.22s; }
+.feature:nth-child(3) { animation-delay: 0.34s; }
+.feature:nth-child(4) { animation-delay: 0.46s; }
+@keyframes featureSlide {
+  from { opacity: 0; transform: translateY(25px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.feature i { transition: transform 0.3s; }
+.feature:hover i { transform: scale(1.3) rotate(-8deg); }
+
+/* ── About circle glow rotate ── */
+.about-circle {
+  animation: spinIn 1s ease both, circleGlow 3s ease-in-out infinite 1s;
+  transition: transform 0.4s;
+}
+.about-circle:hover { transform: scale(1.06) rotate(5deg); }
+@keyframes spinIn {
+  from { opacity: 0; transform: rotate(-20deg) scale(0.7); }
+  to   { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+@keyframes circleGlow {
+  0%, 100% { box-shadow: 0 0 0px rgba(201,168,76,0); }
+  50%       { box-shadow: 0 0 40px rgba(201,168,76,0.5), 0 0 80px rgba(139,26,74,0.2); }
+}
+
+/* ── Stats counter pop ── */
+.stats div {
+  transition: transform 0.3s;
+}
+.stats div:hover { transform: scale(1.1); }
+.stats h3 {
+  animation: countPop 0.6s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes countPop {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Testimonial card hover lift ── */
+.testimonial-card {
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s;
+  position: relative; overflow: hidden;
+}
+.testimonial-card::before {
+  content: '"'; position: absolute; top: -10px; left: 10px;
+  font-size: 6rem; color: var(--primary); opacity: 0.06;
+  font-family: 'Playfair Display', serif; line-height: 1;
+  transition: opacity 0.3s;
+}
+.testimonial-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(139,26,74,0.18);
+}
+.testimonial-card:hover::before { opacity: 0.12; }
+
+/* ── Social icons bounce ── */
+.social-icons a {
+  transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), color 0.3s;
+}
+.social-icons a:hover { transform: translateY(-6px) scale(1.2); color: var(--gold); }
+
+/* ── Section title reveal ── */
+.section-title {
+  position: relative; display: inline-block;
+}
+.section-title::after {
+  content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+.section-title.visible::after { width: 60%; }
+
+/* ── Slide dot active pulse ── */
+.slide-dot.active { animation: dotPulse 1.2s ease-in-out infinite; }
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(139,26,74,0.4); }
+  50%       { transform: scale(1.3); box-shadow: 0 0 0 6px rgba(139,26,74,0); }
+}
+
+/* ── Slide button hover ── */
+.slide-btn { transition: background 0.3s, transform 0.2s; }
+.slide-btn:hover { background: var(--primary); transform: translateY(-50%) scale(1.15); }
+
+/* ── Tab ripple ── */
+.tab { position: relative; overflow: hidden; }
+.tab::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.25);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.tab:hover::after { transform: scaleX(1); }
+
+/* ── Hero subtitle underline grow ── */
+.hero-sub { position: relative; display: inline-block; }
+.hero-sub::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 0; height: 2px; background: var(--gold);
+  animation: underlineGrow 1.2s ease forwards 1s;
+}
+@keyframes underlineGrow { to { width: 100%; } }
+
+/* ── Overlay fade ── */
+.overlay { transition: opacity 0.3s; opacity: 0; }
+.overlay.show { opacity: 1; }
+
+/* ── Footer sparkle text ── */
+footer strong {
+  background: linear-gradient(90deg, var(--gold), #fff, var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: #fff; padding: 1rem 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
