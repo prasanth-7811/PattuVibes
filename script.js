@@ -7,10 +7,10 @@ const products = [
   { id: 6, name: "Sunset Big Putta", type: "bigputta", price: 16500, emoji: "🟠", badge: "New" },
   { id: 7, name: "Magenta Cottonjute", type: "cottonjute", price: 13000, emoji: "🟣", badge: "" },
   { id: 8, name: "Rose Gold Small Putta", type: "smallputta", price: 10500, emoji: "🌸", badge: "Trending" },
-  { id: 9, name: "Kasavu Mundum Neriyathum", type: "kerala", price: 8500, emoji: "🤍", badge: "Traditional" },
-  { id: 10, name: "Golden Kasavu Kerala Saree", type: "kerala", price: 11000, emoji: "🟡", badge: "Bestseller" },
-  { id: 11, name: "Kerala Cotton Kasavu", type: "kerala", price: 7500, emoji: "🌿", badge: "New" },
-  { id: 12, name: "Double Kasavu Saree", type: "kerala", price: 13500, emoji: "✨", badge: "Premium" },
+  {
+    id: 9, name: "Peacock Grace Kerala Saree", type: "kerala", price: 9500, badge: "Traditional",
+    images: ["KERALA SAREE 1.jpeg", "KERALA SAREE 2.jpeg", "KERALA SAREE 3.jpeg", "KERALA SAREE 4.jpeg"]
+  },
 ];
 
 let cart = [];
@@ -18,22 +18,72 @@ let cart = [];
 function renderProducts(filter) {
   const grid = document.getElementById("productGrid");
   const filtered = filter === "all" ? products : products.filter(p => p.type === filter);
-  grid.innerHTML = filtered.map(p => `
-    <div class="product-card">
-      <div class="product-img" style="background:${p.type === 'kerala' ? 'linear-gradient(135deg,#fff8e1,#ffecb3)' : 'linear-gradient(135deg,#fce4ec,#f8bbd0)'}">
-        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}}
-        <span>${p.emoji}</span>
-      </div>
-      <div class="product-info">
-        <h3>${p.name}</h3>
-        <p class="type">${p.type.charAt(0).toUpperCase() + p.type.slice(1)} Silk</p>
-        <div class="product-footer">
-          <span class="price">₹${p.price.toLocaleString()}</span>
-          <button class="add-to-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+  grid.innerHTML = filtered.map(p => {
+    if (p.type === "kerala") {
+      return `
+        <div class="product-card kerala-card" onclick="openSlider()">
+          <div class="product-img kerala-img">
+            ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+            <img src="${p.images[0]}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;"/>
+          </div>
+          <div class="product-info">
+            <h3>${p.name}</h3>
+            <p class="type">Kerala Silk</p>
+            <div class="product-footer">
+              <span class="price">₹${p.price.toLocaleString()}</span>
+              <button class="add-to-cart" onclick="event.stopPropagation();addToCart(${p.id})">Add to Cart</button>
+            </div>
+          </div>
+        </div>`;
+    }
+    return `
+      <div class="product-card">
+        <div class="product-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+          ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+          <span>${p.emoji}</span>
         </div>
-      </div>
-    </div>
-  `).join("");
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p class="type">${p.type.charAt(0).toUpperCase() + p.type.slice(1)} Silk</p>
+          <div class="product-footer">
+            <span class="price">₹${p.price.toLocaleString()}</span>
+            <button class="add-to-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+// Kerala Slider
+const keralaImages = ["KERALA SAREE 1.jpeg", "KERALA SAREE 2.jpeg", "KERALA SAREE 3.jpeg", "KERALA SAREE 4.jpeg"];
+let currentSlide = 0;
+
+function openSlider() {
+  currentSlide = 0;
+  updateSlider();
+  document.getElementById("keralaSlider").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
+}
+
+function closeSlider() {
+  document.getElementById("keralaSlider").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+}
+
+function updateSlider() {
+  document.getElementById("sliderImg").src = keralaImages[currentSlide];
+  document.getElementById("slideCounter").textContent = (currentSlide + 1) + " / " + keralaImages.length;
+  document.querySelectorAll(".slide-dot").forEach((d, i) => d.classList.toggle("active", i === currentSlide));
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % keralaImages.length;
+  updateSlider();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + keralaImages.length) % keralaImages.length;
+  updateSlider();
 }
 
 function addToCart(id) {
@@ -67,7 +117,7 @@ function renderCart() {
   itemsDiv.innerHTML = cart.map(c => `
     <div class="cart-item">
       <div class="cart-item-info">
-        <h4>${c.emoji} ${c.name}</h4>
+        <h4>${c.emoji || "🦚"} ${c.name}</h4>
         <p>₹${c.price.toLocaleString()} × ${c.qty}</p>
       </div>
       <i class="fas fa-trash remove-item" onclick="removeFromCart(${c.id})"></i>
@@ -126,9 +176,7 @@ function generateOtp() {
   alert("Your OTP is: " + generatedOtp + "\n(In production, this will be sent via SMS)");
 }
 
-function resendOtp() {
-  generateOtp();
-}
+function resendOtp() { generateOtp(); }
 
 function verifyOtp() {
   const boxes = document.querySelectorAll(".otp-box");
@@ -161,7 +209,10 @@ document.querySelectorAll(".tab").forEach(tab => {
 // Cart toggle
 document.getElementById("cartIcon").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
-document.getElementById("overlay").addEventListener("click", closeCart);
+document.getElementById("overlay").addEventListener("click", () => {
+  closeCart();
+  closeSlider();
+});
 
 document.getElementById("closeAddress").addEventListener("click", () => {
   document.getElementById("addressModal").classList.remove("open");
@@ -189,7 +240,7 @@ document.getElementById("closeTxn").addEventListener("click", () => {
   document.getElementById("overlay").classList.remove("show");
 });
 
-// OTP auto-focus next box
+// OTP auto-focus
 document.addEventListener("input", e => {
   if (e.target.classList.contains("otp-box")) {
     const boxes = Array.from(document.querySelectorAll(".otp-box"));

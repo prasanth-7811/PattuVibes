@@ -253,6 +253,31 @@
     </div>
   </div>
 
+  <!-- KERALA SAREE SLIDER MODAL -->
+  <div class="payment-modal" id="keralaSlider">
+    <div class="kerala-slider-content">
+      <div class="payment-header">
+        <h3>🦚 Peacock Grace Kerala Saree</h3>
+        <i class="fas fa-times" onclick="closeSlider()"></i>
+      </div>
+      <div class="slider-body">
+        <button class="slide-btn prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+        <img id="sliderImg" src="KERALA SAREE 1.jpeg" alt="Kerala Saree"/>
+        <button class="slide-btn next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="slide-dots">
+        <span class="slide-dot active" onclick="currentSlide=0;updateSlider()"></span>
+        <span class="slide-dot" onclick="currentSlide=1;updateSlider()"></span>
+        <span class="slide-dot" onclick="currentSlide=2;updateSlider()"></span>
+        <span class="slide-dot" onclick="currentSlide=3;updateSlider()"></span>
+      </div>
+      <p id="slideCounter" style="text-align:center;color:var(--text);font-size:0.85rem;">1 / 4</p>
+      <div style="padding:1rem;">
+        <button class="btn-primary" style="width:100%" onclick="closeSlider();addToCart(9)">Add to Cart – ₹9,500</button>
+      </div>
+    </div>
+  </div>
+
   <div class="overlay" id="overlay"></div>
 
   <script src="script.js"></script>
