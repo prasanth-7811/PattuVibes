@@ -7,6 +7,10 @@ const products = [
   { id: 6, name: "Sunset Big Putta", type: "bigputta", price: 16500, emoji: "🟠", badge: "New" },
   { id: 7, name: "Magenta Cottonjute", type: "cottonjute", price: 13000, emoji: "🟣", badge: "" },
   { id: 8, name: "Rose Gold Small Putta", type: "smallputta", price: 10500, emoji: "🌸", badge: "Trending" },
+  { id: 9, name: "Kasavu Mundum Neriyathum", type: "kerala", price: 8500, emoji: "🤍", badge: "Traditional" },
+  { id: 10, name: "Golden Kasavu Kerala Saree", type: "kerala", price: 11000, emoji: "🟡", badge: "Bestseller" },
+  { id: 11, name: "Kerala Cotton Kasavu", type: "kerala", price: 7500, emoji: "🌿", badge: "New" },
+  { id: 12, name: "Double Kasavu Saree", type: "kerala", price: 13500, emoji: "✨", badge: "Premium" },
 ];
 
 let cart = [];
@@ -16,8 +20,8 @@ function renderProducts(filter) {
   const filtered = filter === "all" ? products : products.filter(p => p.type === filter);
   grid.innerHTML = filtered.map(p => `
     <div class="product-card">
-      <div class="product-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
-        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+      <div class="product-img" style="background:${p.type === 'kerala' ? 'linear-gradient(135deg,#fff8e1,#ffecb3)' : 'linear-gradient(135deg,#fce4ec,#f8bbd0)'}">
+        ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}}
         <span>${p.emoji}</span>
       </div>
       <div class="product-info">
