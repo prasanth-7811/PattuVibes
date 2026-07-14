@@ -8,7 +8,7 @@ const products = [
   { id: 7, name: "Magenta Cottonjute", type: "cottonjute", price: 13000, emoji: "🟣", badge: "" },
   { id: 8, name: "Rose Gold Small Putta", type: "smallputta", price: 10500, emoji: "🌸", badge: "Trending" },
   {
-    id: 9, name: "Peacock Grace Kerala Saree", type: "kerala", price: 9500, badge: "Traditional",
+    id: 9, name: "Peacock Grace Kerala Saree", type: "kerala", price: 750, badge: "Traditional",
     images: ["KERALA SAREE 1.jpeg", "KERALA SAREE 2.jpeg", "KERALA SAREE 3.jpeg", "KERALA SAREE 4.jpeg"]
   },
 ];
